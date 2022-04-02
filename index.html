@@ -11,7 +11,11 @@
 <header>
     <div class="header-row">
         <h1>NUMBLE</h1>
-        <img src="increasing.png" width="30px" height="30px" alt="icon"></span>
+        <img src="increasing.png" id="inc_image" width="30px" height="30px" alt="icon"></span>
+    </div>
+    <div class="header-second-row">
+        <div class="text_result"></div>
+        <hr>
     </div>
 </header>
 <body>
@@ -72,33 +76,42 @@
             <div class="box" id="box-42"></div>
         </div>
     </div>
-    <br> <br> <br> <br> <br> <br>
-    <div class="buttons-layout">
-        <div class="buttons-row">
-            <button id="btn-1" onclick="on_click_button('1')">1</button>
-            <button id="btn-2" onclick="on_click_button('2')">2</button>
-            <button id="btn-3" onclick="on_click_button('3')">3</button>
-            <button id="btn-4" onclick="on_click_button('4')">4</button>
-            <button id="btn-5" onclick="on_click_button('5')">5</button>
+    <section id="result_message">
+        <div class="box-row">
+            <div class="box" id="box-result-1"></div>
+            <div class="box" id="box-result-2"></div>
+            <div class="box" id="box-result-3"></div>
+            <div class="box" id="box-result-4"></div>
         </div>
-        <div class="buttons-row">
-            <button id="btn-6" onclick="on_click_button('6')">6</button>
-            <button id="btn-7" onclick="on_click_button('7')">7</button>
-            <button id="btn-8" onclick="on_click_button('8')">8</button>
-            <button id="btn-9" onclick="on_click_button('9')">9</button>
-            <button id="btn-0" onclick="on_click_button('0')">0</button>
+    </section>
+    <section id="buttons">
+        <div class="buttons-layout">
+            <div class="buttons-row">
+                <button id="btn-1" onclick="on_click_button('1')">1</button>
+                <button id="btn-2" onclick="on_click_button('2')">2</button>
+                <button id="btn-3" onclick="on_click_button('3')">3</button>
+                <button id="btn-4" onclick="on_click_button('4')">4</button>
+                <button id="btn-5" onclick="on_click_button('5')">5</button>
+            </div>
+            <div class="buttons-row">
+                <button id="btn-6" onclick="on_click_button('6')">6</button>
+                <button id="btn-7" onclick="on_click_button('7')">7</button>
+                <button id="btn-8" onclick="on_click_button('8')">8</button>
+                <button id="btn-9" onclick="on_click_button('9')">9</button>
+                <button id="btn-0" onclick="on_click_button('0')">0</button>
+            </div>
+            <div class="buttons-row">
+                <button id="btn-plus" onclick="on_click_button('+')">+</button>
+                <button id="btn-minus" onclick="on_click_button('-')">-</button>
+                <button id="btn-divide" onclick="on_click_button('/')">/</button>
+                <button id="btn-mul" onclick="on_click_button('*')">*</button>
+                <button id="btn-del" onclick="on_click_delete()">⌫</button>
+            </div> <br>
+            <div class="buttons-row">
+                <button id="enter" onclick="on_click_enter()">Enter</button>
+            </div>
         </div>
-        <div class="buttons-row">
-            <button id="btn-plus" onclick="on_click_button('+')">+</button>
-            <button id="btn-minus" onclick="on_click_button('-')">-</button>
-            <button id="btn-divide" onclick="on_click_button('/')">/</button>
-            <button id="btn-mul" onclick="on_click_button('*')">*</button>
-            <button id="btn-del" onclick="on_click_delete()">⌫</button>
-        </div> <br>
-        <div class="buttons-row">
-            <button id="enter" onclick="on_click_enter()">Enter</button>
-        </div>
-    </div>
+    </section>
     
 </body>
 </html>
