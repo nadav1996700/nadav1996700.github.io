@@ -1,29 +1,85 @@
 var focus_box = 1; // the box that we currently working on
-var finished_line = false; // tells if we need to start filling the next line of boxes
 var first_index_of_current_line = 1;
 const last_indexes_in_line = new Array(7, 14, 21, 28, 35, 42);
-var equation = "6*2-9+8/4";
-var result = 5;
+var equation = "6*2-9/3";
+var result = 9;
 
 /* set the result */
-document.getElementById("result").innerHTML = '   ' + result;
+//document.getElementById("result").innerHTML = '   ' + result;
 
 /* handle enter click */
 function on_click_enter() {
+    // check that the equation is valid
     if(checkEquation()) {
-        var element = document.getElementById("box-" + focus_box);
-        element.style.backgroundColor = "#FFFF00";
+        // paint_squares method return true if game is over (player won)
+        if(!paint_squares()) {
+            first_index_of_current_line += 7
+            focus_box = first_index_of_current_line;
+            if(first_index_of_current_line > 42) {
+                GameOver('l'); // lost
+            }
+        } else {
+            GameOver('w'); // won
+        }
     }
+}
+
+// paint the squares in the right color and check if the player won the game 
+function paint_squares() {
+    var isWin = true;
+    // check each of the boxes and paint if needed
+    for(var i = 0; i < 7; i++) {
+        var box = document.getElementById('box-' + eval(first_index_of_current_line + i));
+        if(box.innerHTML === equation[i]) {
+            box.style.backgroundColor = "#90EE90"; // paint in green
+            paint_button(box.innerHTML, "#90EE90");
+        }
+        else {
+            isWin = false;
+            if(equation.includes(box.innerHTML)) {
+                box.style.backgroundColor = "#CCCC00"; // paint in yellow
+                paint_button(box.innerHTML, "#CCCC00");
+            }   
+        }
+    }
+    return isWin ? true : false;
+}
+
+/* paint button with match color */
+function paint_button(sign, color) {
+    var button;
+    switch(sign) {
+        case '+':
+            button = document.getElementById("btn-plus");
+        break;
+        case '-':
+            button = document.getElementById("btn-minus");
+        break;
+        case '/':
+            button = document.getElementById("btn-divide");
+        break;
+        case '*':
+            button = document.getElementById("btn-mul");
+        break;
+        default:
+            button = document.getElementById('btn-' + sign);
+            break;
+    }
+    button.style.backgroundColor = color;
 }
 
 /* check if the equasion is equal to the require result */
 function checkEquation() {
-    var equation = '';
+    var my_equation = '';
     /* build the equation */
     for(var i = first_index_of_current_line; i <= first_index_of_current_line + 6; i++) {
-        equation += document.getElementById("box-" + i).innerHTML;
+        my_equation += document.getElementById("box-" + i).innerHTML;
     }
-    return eval(equation) === result ? true : false;
+    return eval(my_equation) === result ? true : false;
+}
+
+function GameOver() {
+
 }
 
 /* delete value of box and decrease focus_box */
@@ -55,10 +111,4 @@ function change_focus() {
    if(!last_indexes_in_line.includes(focus_box)) {
         focus_box++;
    }
-   // if we finished line (after pressing enter and check line) - also promote by one
-   else if(finished_line) {
-       focus_box++;
-       finished_line = false;
-   }
-
 }
