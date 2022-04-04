@@ -5,7 +5,7 @@ var equation = "6*2-9/3";
 var result = 9;
 
 /* set the result */
-//document.getElementById('result').innerHTML = '   ' + result;
+document.getElementById('result').innerHTML = '9';
 
 /* handle enter click */
 function on_click_enter() {
@@ -24,32 +24,42 @@ function on_click_enter() {
     }
 }
 
+/* write the appropriate message according to the result - won/lost */
 function GameOver(result) {
+    /* bind result boxes */
     var box_one = document.getElementById('box-result-1');
     var box_two = document.getElementById('box-result-2');
     var box_three = document.getElementById('box-result-3');
     var box_four = document.getElementById('box-result-4');
     const boxes = new Array(box_one, box_two, box_three, box_four);
+    // if player lost
     if(result === 'l') {
-        document.getElementById("text_result").innerHTML = "The equation was " + equation;
+        // discover the equation to the player
+        document.getElementById('text_result').textContent = "The equation was " + equation;
+        // change the color of the boxes to red
         boxes.forEach(b => {
             b.style.background = "#FF0000";
             b.style.borderColor = "#FF0000";
         });
+        // write "lost"
         box_one.innerHTML = 'L';
         box_two.innerHTML = 'O';
         box_three.innerHTML = 'S';
         box_four.innerHTML = 'T';
+    // if player won
     } else {
+        // change the color of the boxes to green
         boxes.forEach(b => {
             b.style.background = "#90EE90";
             b.style.borderColor = "#90EE90";
         });
+        // write "won!"
         box_one.innerHTML = 'W';
         box_two.innerHTML = 'O';
         box_three.innerHTML = 'N';
         box_four.innerHTML = '!';
     }
+    // hide the buttons and show the result message that written on the result boxes
     document.getElementById("buttons").style.visibility = 'hidden';
     document.getElementById("result_message").style.visibility = 'visible';
 }
