@@ -169,3 +169,11 @@ function change_focus() {
         focus_box++;
    }
 }
+
+function on_click_image() {
+    document.getElementById("myModal").style.display = "flow-root";
+}
+
+function closeModel() {
+    document.getElementById("myModal").style.display = "none";
+}
