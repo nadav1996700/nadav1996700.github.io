@@ -11,10 +11,11 @@
 <header>
     <div class="header-row">
         <h1>NUMBLE</h1>
-        <img src="increasing.png" id="inc_image" width="30px" height="30px" alt="icon"></span>
+        <img src="increasing.png" id="inc_image" width="30px" height="30px" alt="icon"
+        onclick="on_click_image()"></span>
     </div>
     <div class="header-second-row">
-        <div class="text_result"></div>
+        <div class="text_result" id="text_result"></div>
         <hr>
     </div>
 </header>
@@ -28,7 +29,7 @@
             <div class="box" id="box-5"></div>
             <div class="box" id="box-6"></div>
             <div class="box" id="box-7"></div>
-            <p class="result">=   9</p>
+            <div class="result" id="result"></div>
         </div>
         <div class="box-row">
             <div class="box" id="box-8"></div>
@@ -113,5 +114,12 @@
         </div>
     </section>
     
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModel()">&times;</span>
+          <p>Some text in the Modal..</p>
+        </div>
+      
+      </div>
 </body>
 </html>
