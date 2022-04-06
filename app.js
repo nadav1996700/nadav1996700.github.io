@@ -1,11 +1,19 @@
 var focus_box = 1; // the box that we currently working on
 var first_index_of_current_line = 1;
 const last_indexes_in_line = new Array(7, 14, 21, 28, 35, 42);
-var equation = "6*2-9/3";
-var result = 9;
+var equations_array = ["6*2-9/3:9", "2*3+8/4:8",  "3*4-1+5:16", "9-1*2+3:10"];   
+var equation;
+var result;
 
-/* set the result */
-document.getElementById('result').innerHTML = '9';
+window.onload = function() {
+    // select random string of equation and result
+    var item = equations_array[Math.floor(Math.random()*equations_array.length)];
+    const temp = item.split(":");
+    equation = temp[0];
+    result = parseInt(temp[1]);
+    /* set the result */
+    document.getElementById("result").innerHTML = "=   " + result;
+  };
 
 /* handle enter click */
 function on_click_enter() {
@@ -35,7 +43,7 @@ function GameOver(result) {
     // if player lost
     if(result === 'l') {
         // discover the equation to the player
-        document.getElementById('text_result').textContent = "The equation was " + equation;
+        document.getElementById('text_result').innerHTML = "The equation was " + equation;
         // change the color of the boxes to red
         boxes.forEach(b => {
             b.style.background = "#FF0000";
@@ -69,30 +77,32 @@ function paint_squares() {
     var isWin = true;
     // check each of the boxes and paint if needed
     for(var i = 0; i < 7; i++) {
-        var box = document.getElementById('box-' + eval(first_index_of_current_line + i));
+        var box_name = 'box-' + eval(first_index_of_current_line + i);
+        var box = document.getElementById(box_name);
         if(box.innerHTML === equation[i]) {
-            box.style.backgroundColor = "#90EE90"; // paint in green
-            box.style.color = "#FFFFFF";
-            box.style.borderColor = "#90EE90";
-            paint_button(box.innerHTML, "#90EE90");
+            paintBoxAndButton(box, box_name, '#90EE90'); // paint in green
         }
         else {
             isWin = false;
             if(equation.includes(box.innerHTML)) {
-                box.style.backgroundColor = "#CCCC00"; // paint in yellow
-                box.style.color = "#FFFFFF";
-                box.style.borderColor = "#CCCC00";
-                paint_button(box.innerHTML, "#CCCC00");
+                paintBoxAndButton(box, box_name, '#CCCC00'); // paint in yellow
             } 
             else {
-                box.style.backgroundColor = "#343a40"; // paint in black
-                box.style.color = "#FFFFFF";
-                box.style.borderColor = "#343a40";
-                paint_button(box.innerHTML, "#343a40");
+                paintBoxAndButton(box, box_name, '#343a40'); // paint in black
             }  
         }
     }
     return isWin ? true : false;
+}
+
+/* paint box and button in the appropriate color */
+function paintBoxAndButton(box, box_name, color) {
+    //document.documentElement.style.setProperty('--box-color', color);
+    //document.getElementById(box_name).className = "box-animation";
+    box.style.backgroundColor = color;
+    box.style.color = "#FFFFFF"; // text color
+    box.style.borderColor = color;
+    paint_button(box.innerHTML, color);
 }
 
 /* paint button with match color */
