@@ -1,6 +1,6 @@
 body {
     background: #e9e9e9;
-    color:rgb(65, 65, 65);
+    color: rgb(65, 65, 65);
     display: block;
 }
 
@@ -14,7 +14,7 @@ header {
 }
 
 .header-second-row {
-    margin:auto;
+    margin: auto;
     justify-content: center;
 }
 
@@ -27,9 +27,9 @@ img {
     margin-left: 30px;
 }
 
-hr {
-    width:20%;
-    margin:0 auto;
+.main-hr {
+    width: 20%;
+    margin: 0 auto;
 }
 
 .layout-box {
@@ -64,7 +64,7 @@ hr {
 }
 
 :root {
-    --box-color:green;
+    --box-color: green;
 }
 
 .box-animation {
@@ -83,9 +83,14 @@ hr {
 }
 
 @keyframes mymove {
-    from {background-color: transparent;}
-    to {background-color: var(--box-color);}
-  }
+    from {
+        background-color: transparent;
+    }
+
+    to {
+        background-color: var(--box-color);
+    }
+}
 
 .text_result {
     display: flex;
@@ -159,41 +164,77 @@ button:hover {
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity  */
+}
 
-  /* Modal Content/Box */
+/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
     margin: auto;
     margin-top: 30px;
-    padding: 20px;
     border: 1px solid #888;
     border-radius: 5px;
     width: 30%;
     height: 60%;
-  }
-  
-  /* The Close Button */
-  .close {
+}
+
+.model-header {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.stat-cube {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    text-align: center;
+}
+
+/* The Close Button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+.model-hr {
+    align-items: center;
+    width: 100%;
+    height: 1px;
+}
